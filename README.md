@@ -20,6 +20,3 @@ La aplicación utiliza la cámara para detectar la apertura de la boca y simular
 ```bash
 npm install
 npm start
-
-## Autoría
-Raquel Fernández Bermúdez
