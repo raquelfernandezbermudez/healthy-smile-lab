@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HealthySmile Lab</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Creepster&family=Inter:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/p5.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.9.4/lib/addons/p5.sound.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  </head>
+
+  <body>
+    <main id="app">
+      <div id="loadingScreen">
+        <div class="loadingBox">
+          <div class="loadingLogo">
+            <img src="logo.png" alt="HealthySmile Lab" />
+          </div>
+          <h2>Cargando...</h2>
+        </div>
+      </div>
+
+      <div id="uiPanel">
+        <h1>HealthySmile Lab</h1>
+
+        <p class="subtitle">
+          Abre la boca y mantenla abierta 10 segundos para completar el cepillado.
+        </p>
+
+        <button id="startBtn">EMPEZAR</button>
+        <button id="resetBtn" class="hiddenBtn">REINICIAR</button>
+      </div>
+
+      <div id="canvasContainer"></div>
+    </main>
+
+    <script src="sketch.js"></script>
+  </body>
+</html>

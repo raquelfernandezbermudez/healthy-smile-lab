@@ -1,0 +1,240 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #2e1065 0%, #0a0315 100%);
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+}
+
+#app {
+  width: 100vw;
+  height: 100vh;
+  position: relative;
+}
+
+#canvasContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+canvas {
+  display: block;
+}
+
+#uiPanel {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px;
+  pointer-events: none;
+}
+
+#uiPanel button,
+#uiPanel img,
+#uiPanel p,
+#uiPanel h1 {
+  pointer-events: auto;
+}
+
+#logo {
+  width: 120px;
+  height: auto;
+  margin-bottom: 14px;
+  filter: drop-shadow(0 0 14px rgba(160, 90, 255, 0.45));
+}
+
+h1 {
+  margin: 0 0 14px 0;
+  font-family: "Creepster", cursive;
+  font-size: 4rem;
+  line-height: 0.95;
+  color: #cf95ff;
+  text-shadow:
+    0 0 7px rgba(207, 149, 255, 0.8),
+    0 0 16px rgba(181, 103, 255, 0.9),
+    0 0 34px rgba(181, 103, 255, 0.75);
+}
+
+.subtitle {
+  margin: 0 0 24px 0;
+  max-width: 620px;
+  font-size: 1.12rem;
+  line-height: 1.5;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.97);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.22);
+}
+
+#startBtn,
+#resetBtn {
+  width: auto;
+  min-width: 240px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 22px;
+  color: white;
+  font-family: "Inter", sans-serif;
+  font-size: 0.98rem;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    opacity 0.2s ease;
+  background: linear-gradient(135deg, #ff8c00 0%, #a83df0 100%);
+  box-shadow: 0 10px 24px rgba(255, 140, 0, 0.22);
+}
+
+#startBtn:hover,
+#resetBtn:hover {
+  transform: translateY(-1px) scale(1.015);
+  box-shadow: 0 0 22px rgba(196, 140, 255, 0.36);
+}
+
+.hiddenBtn {
+  display: none !important;
+}
+
+/* modo juego */
+body.gameMode #uiPanel {
+  inset: auto 20px auto auto;
+  top: 18px;
+  right: 20px;
+  width: auto;
+  padding: 0;
+  align-items: flex-end;
+  justify-content: flex-start;
+  text-align: right;
+}
+
+body.gameMode h1,
+body.gameMode .subtitle,
+body.gameMode #startBtn {
+  display: none;
+}
+
+body.gameMode #logo {
+  width: 90px;
+  margin-bottom: 0;
+}
+
+body.gameMode #resetBtn {
+  display: none;
+}
+
+body.gameMode.winMode #resetBtn {
+  display: block;
+}
+
+/* loading */
+#loadingScreen {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at center, #2e1065 0%, #0a0315 100%);
+  transition: opacity 0.5s ease;
+}
+
+#loadingScreen.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.loadingBox {
+  text-align: center;
+  animation: introFade 1s ease-out;
+  padding: 20px;
+}
+
+.loadingLogo img {
+  width: 220px;
+  max-width: 32vw;
+  height: auto;
+  animation:
+    floatLogo 2.5s ease-in-out infinite alternate,
+    glowLogo 2.5s ease-in-out infinite;
+  filter: drop-shadow(0 0 10px rgba(168, 85, 247, 0.6));
+}
+
+.loadingBox h2 {
+  margin: 10px 0 8px 0;
+  font-family: "Creepster", cursive;
+  font-size: 4rem;
+  color: #d8b4fe;
+  text-shadow:
+    0 0 8px #a855f7,
+    0 0 18px #9333ea,
+    0 0 30px rgba(168, 85, 247, 0.9);
+  animation: titlePulse 2s ease-in-out infinite;
+}
+
+.loadingBox p {
+  margin: 0;
+  color: #e9ddff;
+  font-size: 1rem;
+}
+
+@keyframes floatLogo {
+  from {
+    transform: translateY(-8px) scale(1);
+  }
+  to {
+    transform: translateY(8px) scale(1.05);
+  }
+}
+
+@keyframes glowLogo {
+  0% {
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
+  }
+  50% {
+    filter: drop-shadow(0 0 22px rgba(192, 132, 255, 0.9));
+  }
+  100% {
+    filter: drop-shadow(0 0 6px rgba(168, 85, 247, 0.4));
+  }
+}
+
+@keyframes titlePulse {
+  0% {
+    text-shadow:
+      0 0 6px #9333ea,
+      0 0 14px rgba(147, 51, 234, 0.6);
+  }
+  50% {
+    text-shadow:
+      0 0 12px #c084ff,
+      0 0 28px rgba(192, 132, 255, 1);
+  }
+  100% {
+    text-shadow:
+      0 0 6px #9333ea,
+      0 0 14px rgba(147, 51, 234, 0.6);
+  }
+}
+
+@keyframes introFade {
+  from {
+    opacity: 0;
+    transform: scale(0.92) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
